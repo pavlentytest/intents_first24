@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,10 +36,18 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToMainActivity2();
+                goTo();
             }
         });
     }
+    public void goTo() {
+        // неявное намерение (explicit intent)
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        String str = "https://samsung.com";
+        intent.setData(Uri.parse(str));
+        startActivity(intent);
+    }
+
     public void goToMainActivity2() {
         // явное намерение (implicit intent)
         Intent intent = new Intent(this, MainActivity2.class);
